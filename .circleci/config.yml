@@ -1,6 +1,14 @@
-machine:
-  java:
-    version: openjdk8
-test:
-  override:
-    - mvn test
+version: 2
+
+jobs:
+ test_exec:
+   docker:
+     - image: maven:3.3-jdk-8
+   steps:
+     - checkout
+     - run:
+        command: mvn install
+
+     - run:
+         name: Run test via maven
+         command: mvn test

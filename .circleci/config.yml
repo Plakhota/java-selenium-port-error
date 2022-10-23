@@ -1,6 +1,8 @@
 version: '2.1'
 orbs:
-  maven: circleci/maven@x.y
+  maven: circleci/maven@x.y1
+  browser-tools: circleci/browser-tools@1.4.0
+
 workflows:
   maven_test:
     jobs:

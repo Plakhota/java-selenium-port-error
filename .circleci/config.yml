@@ -16,7 +16,15 @@ jobs:
      - run:
         name: Start Selenium
         command: |
-         java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+         sudo dpkg -i google-chrome-stable_current_amd64.deb
+         chromeVersion=$(google-chrome --product-version | sed 's/\..*//')
+         latestChromeDriverURL=$(wget http://chromedriver.storage.googleapis.com/LATEST_RELEASE_$chromeVersion -q -O -)
+         echo $latestChromeDriverURL
+         wget "http://chromedriver.storage.googleapis.com/${latestChromeDriverURL}/chromedriver_linux64.zip"
+         unzip chromedriver_linux64.zip -d chromedriver
+         chmod +x chromedriver
+         export PATH="$PWD/chromedriver:$PATH"
         background: true
      - run:
         command: |

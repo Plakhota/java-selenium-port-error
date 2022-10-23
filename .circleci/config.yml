@@ -27,7 +27,9 @@ jobs:
          echo $latestChromeDriverURL
          wget "http://chromedriver.storage.googleapis.com/${latestChromeDriverURL}/chromedriver_linux64.zip"
          unzip chromedriver_linux64.zip -d chromedriver
-         chmod +x chromedriver
+         echo "installed chromedriver"
+         ls
+         chmod +x ./chromedriver
          export PATH="$PWD/chromedriver:$PATH"
         background: true
      - run:

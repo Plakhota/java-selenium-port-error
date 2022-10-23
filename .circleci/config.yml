@@ -1,14 +1,14 @@
-version: 2
-
 jobs:
- test_exec:
+ build:
    docker:
      - image: maven:3.3-jdk-8
+     working_directory: ~/repo
+     
    steps:
-     - checkout
+     - checkout:
      - run:
         command: mvn install
 
      - run:
-         name: Run test via maven
-         command: mvn test
+        name: Run test via maven
+        command: mvn test

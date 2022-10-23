@@ -2,7 +2,8 @@ jobs:
  build:
    docker:
      - image: maven:3.3-jdk-8
-     working_directory: ~/repo
+     
+   working_directory: ~/repo
      
    steps:
      - checkout:

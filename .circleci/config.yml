@@ -1,6 +1,24 @@
-machine:
-  java:
-    version: openjdk8
-test:
-  override:
-    - mvn test
+jobs:
+ orbs:
+   browser-tools: circleci/browser-tools@1.4.0
+ build:
+   docker:
+     - image: maven:3.3-jdk-8
+     
+   working_directory: ~/repo
+   
+     
+   steps:
+    
+     - browser-tools/install-browser-tools
+     - checkout:
+     - run:
+        command: |
+         pwd
+         ls -a
+     - run:
+        command: mvn install
+
+     - run:
+        name: Run test via maven
+        command: mvn test

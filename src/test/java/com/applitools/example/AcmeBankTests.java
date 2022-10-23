@@ -13,6 +13,7 @@ public class AcmeBankTests {
 
 @Test
     public void test() {
+    System.setProperty("webdriver.chrome.driver","/root/repo/chromedriver")
     WebDriver driver = new ChromeDriver();
 
     if (driver != null)
